@@ -1,0 +1,9 @@
+.main {
+  background-image: url("./assets//bgImage.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  font-family: "Grand Hotel", cursive;
+  font-weight: 400;
+}
