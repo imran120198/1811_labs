@@ -1,15 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
-import { supabase } from "../lib/supabaseClient";
 import heart from "../assets/Heart.svg";
 import google from "../assets/Google.svg";
+import { supabase } from "../lib/supabase/browser";
 
 const Page = () => {
-  const handleGoogleSignIn = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
+  const signInWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
     });
-    if (error) console.log('Error signing in with Google:', error.message);
+    if (error) {
+      console.error("Error signing in with Google:", error.message);
+    }
   };
 
   return (
@@ -32,7 +39,7 @@ const Page = () => {
         </div>
         <button
           className="border w-[400px] p-2 flex items-center justify-center rounded-full"
-          onClick={handleGoogleSignIn}
+          onClick={signInWithGoogle}
         >
           <Image src={google} alt="google" />
           <p className="ml-2 text-[16px] font-inter font-semibold">
