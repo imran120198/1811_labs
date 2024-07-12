@@ -1,9 +1,17 @@
 import Image from "next/image";
 import React from "react";
+import { supabase } from "../lib/supabaseClient";
 import heart from "../assets/Heart.svg";
 import google from "../assets/Google.svg";
 
-const page = () => {
+const Page = () => {
+  const handleGoogleSignIn = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+    });
+    if (error) console.log('Error signing in with Google:', error.message);
+  };
+
   return (
     <>
       <div className="flex flex-col gap-5 items-center justify-center h-screen w-full">
@@ -22,7 +30,10 @@ const page = () => {
             Generate pickup line for your crush now!
           </p>
         </div>
-        <button className="border w-[400px] p-2 flex items-center justify-center rounded-full">
+        <button
+          className="border w-[400px] p-2 flex items-center justify-center rounded-full"
+          onClick={handleGoogleSignIn}
+        >
           <Image src={google} alt="google" />
           <p className="ml-2 text-[16px] font-inter font-semibold">
             Sign up with Google
@@ -33,4 +44,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -1,0 +1,10 @@
+.main {
+  background-image: url("../assets//formbgImage.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  font-family: "Grand Hotel", cursive;
+  font-weight: 400;
+  color: #ff2157;
+}
