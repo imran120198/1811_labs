@@ -34,7 +34,7 @@ export async function GET(request: Request) {
       console.error("Error exchanging code for session:", error);
     } else {
       console.log("Successfully exchanged code for session.");
-      return NextResponse.redirect(`${origin}/form`);
+      return NextResponse.redirect(`${origin}/generate`);
     }
   } else {
     console.error("Code is null. Redirecting to error page.");
