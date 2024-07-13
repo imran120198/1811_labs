@@ -11,7 +11,7 @@ interface DataType {
   answer: string;
 }
 
-const generate: React.FC = () => {
+const page: React.FC = () => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
   const [user, setUser] = useState<any>(null);
   const [aboutCrush, setAboutCrush] = useState<any>("");
@@ -194,4 +194,4 @@ const generate: React.FC = () => {
   );
 };
 
-export default generate;
+export default page;
